@@ -1,0 +1,348 @@
+:root {
+    --sidebar--bg-color: #cbd1ff;
+    --heading-bg-color: #F64C72; 
+    --main-bg-color: #6c7ae4;
+    --light-text-color: white;
+    --dark-text-color: #1b2048;
+    --heading-1-font-size: 32px;
+    --heading-2-font-size: 24px;
+    --heading-3-font-size: 16px;
+    --root-font-size: 18px;
+
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--root-font-size);
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 6fr;
+    grid-template-areas:
+        "sidebar header"
+        "sidebar section";
+}
+
+header {
+    background: var(--heading-bg-color);
+    color: var(--dark-text-color);
+    grid-area: header;
+    padding: 18px 32px 18px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+ 
+.header-top {
+    display: grid;
+    grid-template-columns: 1fr 18fr 3fr 1fr 1fr 3fr;
+    grid-template-areas: "search-button search . notifications profile-corner name1";
+    gap: 8px;
+    align-items: center;
+}
+
+.header-top img:first-of-type {
+    grid-area: search-button;
+}
+
+#search {
+    appearance: none;
+    -webkit-appearance: none;
+    grid-area: search;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.header-top img:nth-of-type(2) {
+    grid-area: notifications;
+    justify-self: center;
+}
+
+.header-top img:nth-of-type(3) {
+    grid-area: profile-corner;
+    height: 42px;
+    width: auto;
+}
+
+.header-top span {
+    grid-area: name1
+}
+
+.header-bottom {
+    display: grid;
+    grid-template-columns: 0.5fr 3fr 3fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+        "profile-main hello . new upload share"
+        "profile-main name2 . new upload share";
+    column-gap: 8px;
+}
+
+.header-bottom > * {
+    align-self: center;
+    margin: 0;
+}
+
+.header-bottom img:first-of-type {
+    grid-area: profile-main;
+    justify-self: start;
+    height: 64px;
+    width: auto;
+}
+
+.header-bottom p {
+    grid-area: hello;
+}
+
+.header-bottom span {
+    grid-area: name2;
+}
+
+.header-bottom button {
+    align-self: center;
+    background: transparent;
+    padding: 8px;
+    border: 2px solid var(--dark-text-color);
+    border-radius: 16px;
+}
+
+.header-bottom button:first-of-type {
+    grid-area: new;
+}
+
+.header-bottom button:nth-of-type(2) {
+    grid-area: upload;
+}
+
+.header-bottom button:nth-of-type(3) {
+    grid-area: share;
+}
+
+sidebar {
+    background: var(--sidebar--bg-color);
+    color: var(--light-text-color);
+    padding: 16px;
+    grid-area: sidebar;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 60px 60px 60px 60px 60px 60px 120px 60px 60px 60px;
+    gap: 8px;
+    align-items: center;
+
+
+}
+
+sidebar img {
+    justify-self: center;
+    max-width: 50px;
+    max-height: 50px;
+    grid-column: 1 ;
+}
+
+sidebar h2,
+sidebar h1 {
+    margin: 0;
+    grid-column: 2 / 3;
+}
+
+sidebar img:first-of-type,
+sidebar h1 {
+    margin-bottom: 32px;
+}
+
+sidebar img:nth-of-type(7),
+sidebar h2:nth-of-type(6) {
+    align-self: start;
+    margin-top: 17.5px;
+}
+
+sidebar img:nth-of-type(7) {
+    margin-top: 25px;
+}
+
+section {
+    background: var(--main-bg-color);
+    grid-area: section;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 3.5fr 1fr;
+    grid-template-rows: 0.5fr 4fr 1fr 5fr;
+    grid-template-areas: 
+        "project-heading announcement-heading"
+        "cards announcements"
+        "cards trending-heading"
+        "cards trending";
+}
+
+section h2 {
+    color: var(--light-text-color);
+    align-self: center;
+    height: min-content;
+}
+
+section h2:first-of-type {
+    grid-area: project-heading;
+}
+
+section h2:nth-of-type(2) {
+    grid-area: announcement-heading;
+}
+
+
+.cards {
+    grid-area: cards;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 16px;
+    margin-right: 16px;
+}
+
+.card, 
+.announcements, 
+.trending {
+    background-color: white;
+    padding: 8px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    min-height: 225px;
+    border-radius: 8px;
+    padding: 8px 8px 8px 24px;
+    background: linear-gradient(to right, var(--heading-bg-color), var(--heading-bg-color) 8px, white 8px, white 8px);
+}
+
+.card ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: end;
+    gap: 18px;
+    margin-top: auto;
+}
+
+
+.announcements {
+    grid-area: announcements;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+}
+
+.announcements p {
+    border-bottom: 2px solid #cdcdcd;
+}
+
+.announcements p:nth-of-type(3) {
+    border-bottom: none;
+}
+
+section h2:nth-of-type(3) {
+    grid-area: trending-heading;
+}
+
+.trending {
+    grid-area: trending;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: repeat(8,1fr);
+    grid-template-areas: 
+        "icon1 name1"
+        "icon1 title1"
+        "icon2 name2"
+        "icon2 title2"
+        "icon3 name3"
+        "icon3 title3"
+        "icon4 name4"
+        "icon4 title4"
+}
+
+.trending > * {
+    margin: 0px 0px 0px 8px;
+}
+
+.trending span {
+    margin: none;
+    align-self: end;
+}
+
+.trending img {
+    align-self: center;
+    height: 64px;
+    width: auto;
+}
+
+.trending img:first-of-type {
+    grid-area: icon1;
+}
+
+.trending span:first-of-type {
+    grid-area: name1;
+}
+
+.trending p:first-of-type {
+    grid-area: title1;
+}
+
+.trending img:nth-of-type(2) {
+    grid-area: icon2;
+}
+
+.trending span:nth-of-type(2) {
+    grid-area: name2;
+}
+
+.trending p:nth-of-type(2) {
+    grid-area:title2
+}
+
+.trending img:nth-of-type(3) {
+    grid-area: icon3;
+}
+
+.trending span:nth-of-type(3) {
+    grid-area: name3;
+}
+
+.trending p:nth-of-type(3) {
+    grid-area: title3;
+}
+
+.trending img:nth-of-type(4) {
+    grid-area: icon4;
+}
+
+.trending span:nth-of-type(4) {
+    grid-area: name4;
+}
+
+.trending p:nth-of-type(4) {
+    grid-area: title4;
+}
+
+img:hover,
+button:hover,
+h1:hover,
+h2:hover,
+h3:hover,
+.trending > *:hover {
+    cursor: pointer;
+}
+
+.header-bottom button:hover {
+    background: var(--sidebar--bg-color);
+}
